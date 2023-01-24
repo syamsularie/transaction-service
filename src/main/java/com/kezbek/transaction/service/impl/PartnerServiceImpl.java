@@ -7,6 +7,7 @@ import com.kezbek.transaction.repository.PartnerRepository;
 import com.kezbek.transaction.service.PartnerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,19 @@ public class PartnerServiceImpl implements PartnerService {
 
     @Override
     public ResponseEntity add(PartnerRequest partnerInput) {
-        Partner partner = Partner.builder()
-                .partnerCode(partnerInput.getPartnerCode())
-                .name(partnerInput.getName())
-                .description(partnerInput.getDescription())
-                .category(partnerInput.getCategory())
-                .build();
-        partnerRepository.save(partner);
-        return ResponseEntity.ok(new CommonResponse());
+        try{
+            Partner partner = Partner.builder()
+                    .partnerCode(partnerInput.getPartnerCode())
+                    .name(partnerInput.getName())
+                    .description(partnerInput.getDescription())
+                    .category(partnerInput.getCategory())
+                    .build();
+            partnerRepository.save(partner);
+            return ResponseEntity.ok(new CommonResponse());
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return new  ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
     }
 }

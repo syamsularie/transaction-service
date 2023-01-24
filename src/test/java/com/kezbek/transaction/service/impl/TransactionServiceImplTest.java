@@ -1,14 +1,14 @@
 package com.kezbek.transaction.service.impl;
 
-import com.kezbek.transaction.entity.Partner;
-import com.kezbek.transaction.entity.TierType;
-import com.kezbek.transaction.entity.UserTier;
+import com.kezbek.transaction.entity.*;
+import com.kezbek.transaction.external.TopUpEmoney;
 import com.kezbek.transaction.feign.KezbekDroolsClientService;
 import com.kezbek.transaction.model.request.PotentialCashbackRequest;
 import com.kezbek.transaction.model.request.TransactionRequest;
 import com.kezbek.transaction.model.response.PotentialCashbackResponse;
 import com.kezbek.transaction.model.response.UserTransactionResponse;
 import com.kezbek.transaction.repository.PartnerRepository;
+import com.kezbek.transaction.repository.TransactionDetailReporsitory;
 import com.kezbek.transaction.repository.TransactionRepository;
 import com.kezbek.transaction.repository.UserTierRepository;
 import org.junit.jupiter.api.Assertions;
@@ -39,6 +39,10 @@ public class TransactionServiceImplTest {
     KezbekDroolsClientService kezbekDroolsClientService;
     @Mock
     PushNotificationQueueServiceImpl pushNotificationQueueService;
+    @Mock
+    TopUpEmoney topUpEmoney;
+    @Mock
+    TransactionDetailReporsitory transactionDetailReporsitory;
 
     @BeforeEach
     void init() {
@@ -48,6 +52,8 @@ public class TransactionServiceImplTest {
         this.transactionService.transactionRepository = transactionRepository;
         this.transactionService.kezbekDroolsClientService = kezbekDroolsClientService;
         this.transactionService.pushNotificationQueueService = pushNotificationQueueService;
+        this.transactionService.topUpEmoney = topUpEmoney;
+        this.transactionService.transactionDetailReporsitory = transactionDetailReporsitory;
     }
 
     @Test
@@ -84,11 +90,9 @@ public class TransactionServiceImplTest {
                 .build());
         when(userTierRepository.save(Mockito.any(UserTier.class)))
                 .thenAnswer(i -> i.getArguments()[0]);
-//        when(pushNotificationQueueService.execute(Mockito.any(UserTransactionResponse.class)))
-//                .thenAnswer(i -> i.getArguments()[0]);
-//        doReturn(UserTransactionResponse.class)
-//                .when(pushNotificationQueueService)
-//                .execute(any());
+        Mockito.when(transactionRepository.saveAndFlush(any())).thenReturn(Transaction.builder().id(1L).build()).thenReturn(true);
+        Mockito.when(transactionDetailReporsitory.findByTransctionId(any())).thenReturn(TransactionDetail.builder().id(1L).build());
+        Mockito.when(topUpEmoney.topup(any(),any())).thenReturn(true);
         //act
         UserTransactionResponse userTransactionResponse = transactionService.getCashback(transactionRequest);
         //assert
@@ -125,11 +129,9 @@ public class TransactionServiceImplTest {
                 .build());
         when(userTierRepository.save(Mockito.any(UserTier.class)))
                 .thenAnswer(i -> i.getArguments()[0]);
-//        when(pushNotificationQueueService.execute(Mockito.any(UserTransactionResponse.class)))
-//                .thenAnswer(i -> i.getArguments()[0]);
-//        doReturn(UserTransactionResponse.class)
-//                .when(pushNotificationQueueService)
-//                .execute(any());
+        Mockito.when(transactionRepository.saveAndFlush(any())).thenReturn(Transaction.builder().id(1L).build()).thenReturn(true);
+        Mockito.when(transactionDetailReporsitory.findByTransctionId(any())).thenReturn(TransactionDetail.builder().id(1L).build());
+        Mockito.when(topUpEmoney.topup(any(),any())).thenReturn(true);
         //act
         UserTransactionResponse userTransactionResponse = transactionService.getCashback(transactionRequest);
         //assert

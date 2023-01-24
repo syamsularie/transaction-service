@@ -28,7 +28,8 @@ import java.time.LocalDateTime;
 @Transactional
 @Slf4j
 public class TransactionServiceImpl implements TransactionService {
-    private final TransactionDetailReporsitory transactionDetailReporsitory;
+    @Autowired
+    TransactionDetailReporsitory transactionDetailReporsitory;
     @Autowired
     TransactionRepository transactionRepository;
     @Autowired
@@ -42,10 +43,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     TopUpEmoney topUpEmoney;
 
-    public TransactionServiceImpl(TransactionDetailReporsitory transactionDetailReporsitory) {
-
-        this.transactionDetailReporsitory = transactionDetailReporsitory;
-    }
+//    public TransactionServiceImpl(TransactionDetailReporsitory transactionDetailReporsitory) {
+//
+//        this.transactionDetailReporsitory = transactionDetailReporsitory;
+//    }
 
     static TierType nextTier(TierType currentTier) {
         switch (currentTier) {
@@ -60,9 +61,6 @@ public class TransactionServiceImpl implements TransactionService {
         }
     }
 
-    /**
-     * this function is to count cashback and send it to customer e-wallet
-     */
     @Override
     public UserTransactionResponse getCashback(TransactionRequest transactionRequest) {
 
@@ -100,8 +98,6 @@ public class TransactionServiceImpl implements TransactionService {
                 .build()
         ));
         CashbackDTO cashbackDTO = this.cashbackTransaction(transactionRequest, cashbackResponse);
-
-
 
         UserTransactionResponse response = UserTransactionResponse.builder()
                 .email(transactionRequest.getEmail())

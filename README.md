@@ -10,7 +10,7 @@ Kezbek service is Backend Application built using Spring Boot as the main framew
 - Send Email Notification to Customer
 
 ## Architecure
-![Text](/public/architecture.png)
+![Text](https://github.com/syamsularie/transaction-service/blob/main/public/architecture.png)
 
 ## **Tech Stack**
 
@@ -24,7 +24,7 @@ Kezbek service is Backend Application built using Spring Boot as the main framew
 ## **Tech Database**
 Actualy the database is not normally well, the design is flat except the rule related data, so in the future the design can fit using any database technology no exception with nosql db, thanks for sping data jpa with the magic repository, we can easily move to another database tech
 
-![Text](/public/erd.jpg)
+![Text](https://github.com/syamsularie/transaction-service/blob/main/public/erd.jpg)
 
 
 ## **How to Run**

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "discount", url = "http://localhost:9001")
+@FeignClient(name = "http://DROOLS-SERVICE")
 public interface KezbekDroolsClientService {
-    @RequestMapping(value = "/discount", method = RequestMethod.POST)
+    @RequestMapping(value = "/cashback", method = RequestMethod.POST)
     PotentialCashbackResponse getCashback(@RequestBody PotentialCashbackRequest droolsCashback);
 }

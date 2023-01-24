@@ -25,7 +25,7 @@ public interface UserTierRepository extends JpaRepository<UserTier, Long> {
     void updateUserTier(String email, TierType tierType, int transactionCount, LocalDateTime lastTransaction);
 
     @Query(
-            value = "UPDATE user_tiers SET tier_type = CASE WHEN tier_type=0 THEN 0 ELSE tier_type-1 END , transaction_count = 0 WHERE user_tiers.last_transaction < now() - '30 days' :: interval",
+            value = "UPDATE user_tiers SET tier_type = CASE WHEN tier_type=0 THEN 0 ELSE tier_type-1 END , transaction_count = 0 WHERE user_tiers.last_transaction < NOW() - interval '30' day",
             nativeQuery = true
     )
     void downGradeTire();

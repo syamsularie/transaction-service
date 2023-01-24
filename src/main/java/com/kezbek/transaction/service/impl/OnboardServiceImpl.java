@@ -14,10 +14,8 @@ public class OnboardServiceImpl implements OnboardService {
 
     @Autowired
     CognitoAuthorization cognitoAuthorization;
-
     @Autowired
     CognitoInfo cognitoInfo;
-
     @Override
     public SessionResponse authorization(AuthorizationRequest request) {
         SessionResponse authResponse = cognitoAuthorization.execute(request);

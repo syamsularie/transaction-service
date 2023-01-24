@@ -30,7 +30,6 @@ public class Transaction extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "partner_code")
     private Partner partner;
-
     @OneToOne(mappedBy = "transaction", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private TransactionDetail transactionDetail;
 }

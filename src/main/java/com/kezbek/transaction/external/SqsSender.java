@@ -18,7 +18,6 @@ import java.util.Map;
 public class SqsSender<T> {
     @Autowired
     AmazonSQS amazonSqsClient;
-
     private String queue;
     private String queueUrl;
 
