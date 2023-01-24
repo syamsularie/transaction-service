@@ -9350,3 +9350,9 @@ Using generated security password: 8e733f4e-1362-4839-9dde-584651b19f8f
 2023-01-24 11:51:11,071 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] Unregistering ...
 2023-01-24 11:51:11,088 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - deregister  status: 200
 2023-01-24 11:51:11,098 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] Completed shut down of DiscoveryClient
+2023-01-24 11:51:20,303 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-HeartbeatExecutor-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - Re-registering apps/TRANSACTION-SERVICE
+2023-01-24 11:51:20,303 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-HeartbeatExecutor-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:51:20,316 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:51:20,318 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-HeartbeatExecutor-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:51:20,333 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:55:50,281 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
