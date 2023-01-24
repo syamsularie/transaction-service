@@ -34,3 +34,7 @@ build/
 
 *.properties
 */application.yml
+logs/*
+*.log
+logs/spring-boot-logger.log
+src/main/resources/application.yml

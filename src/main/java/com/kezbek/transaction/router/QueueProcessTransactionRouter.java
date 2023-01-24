@@ -1,7 +1,6 @@
 package com.kezbek.transaction.router;
 
 import com.alibaba.fastjson.JSON;
-import com.kezbek.transaction.external.SesMailSender;
 import com.kezbek.transaction.model.response.UserTransactionResponse;
 import com.kezbek.transaction.service.impl.SendEmailNotificationServiceImpl;
 import lombok.extern.slf4j.Slf4j;

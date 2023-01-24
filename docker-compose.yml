@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  docknet:
+    external: true
+
+services:
+  transaction-service:
+    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/transction-api:main
+    container_name: kzbk-transaction
+    restart: always
+    networks:
+      - docknet
+    volumes:
+      - ./config-transaction:/config
+      - ./logs/transaction:/logs
+    ports:
+      - 8080:8080
+
+  kzbk-partner:
+    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/partner-api:main
+    container_name: kzbk-partner
+    restart: always
+    networks:
+      - docknet
+    volumes:
+      - ./config-partner:/config
+      - ./logs/partner:/logs
+
+  kzbk-consumer-notify:
+    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/notify-consumer:main
+    container_name: kzbk-comnsumer-notify
+    restart: always
+    networks:
+      - docknet
+    volumes:
+      - ./config-consumer-notify:/config
+      - ./logs/partner:/logs
+
+volumes:
+  config:
