@@ -63,4 +63,3 @@ create table user_tiers
     tier_type         smallint,
     transaction_count integer      not null
 );
-

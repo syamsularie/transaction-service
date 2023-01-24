@@ -33,5 +33,4 @@ public class AmazonCognitoConfiguration {
                 .withRegion(region)
                 .build();
     }
-
 }

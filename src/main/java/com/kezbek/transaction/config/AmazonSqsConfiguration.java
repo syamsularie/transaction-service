@@ -14,10 +14,8 @@ public class AmazonSqsConfiguration {
 
     @Value("${integration.aws-sqs.access-key}")
     private String accessKey;
-
     @Value("${integration.aws-sqs.secret-key}")
     private String secretKey;
-
     @Value("${integration.aws-sqs.region}")
     private String region;
 
