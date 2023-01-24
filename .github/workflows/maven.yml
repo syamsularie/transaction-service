@@ -7,7 +7,7 @@
 # documentation.
 
 
-name: service transaction
+name: transaction service
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: syamsularie/service-transaction
+        image: syamsularie/transaction-service
         tags: latest
         registry: docker.io
         dockerfile: DockerFile
