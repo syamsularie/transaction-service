@@ -8922,3 +8922,431 @@ Using generated security password: 8e257700-7ffd-4b86-8312-992d21607c1d
 2023-01-24 10:47:33,941 INFO org.apache.camel.impl.engine.AbstractCamelContext [restartedMain]     Started route1 (aws2-sqs://kezbek-notification-email)
 2023-01-24 10:47:33,941 INFO org.apache.camel.impl.engine.AbstractCamelContext [restartedMain] Apache Camel 3.15.0 (camel-1) started in 1s287ms (build:55ms init:1s210ms start:22ms)
 2023-01-24 10:47:33,948 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started Application in 11.466 seconds (JVM running for 12.822)
+2023-01-24 10:52:32,064 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 10:53:57,648 WARN org.apache.camel.spi.CamelLogger [Camel (camel-1) thread #1 - aws2-sqs://kezbek-notification-email] Consumer SqsConsumer[aws2-sqs://kezbek-notification-email?accessKey=AKIA2WLDYKX5GR7IAI66&region=ap-southeast-3&secretKey=xxxxxx] failed polling endpoint: aws2-sqs://kezbek-notification-email?accessKey=AKIA2WLDYKX5GR7IAI66&region=ap-southeast-3&secretKey=xxxxxx. Will try again at next poll. Caused by: [software.amazon.awssdk.core.exception.SdkClientException - Unable to execute HTTP request: Connect to sqs.ap-southeast-3.amazonaws.com:443 [sqs.ap-southeast-3.amazonaws.com/99.78.248.43] failed: connect timed out]
+software.amazon.awssdk.core.exception.SdkClientException: Unable to execute HTTP request: Connect to sqs.ap-southeast-3.amazonaws.com:443 [sqs.ap-southeast-3.amazonaws.com/99.78.248.43] failed: connect timed out
+	at software.amazon.awssdk.core.exception.SdkClientException$BuilderImpl.build(SdkClientException.java:98)
+	at software.amazon.awssdk.core.exception.SdkClientException.create(SdkClientException.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.setLastException(RetryableStageHelper.java:204)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:56)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:80)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:60)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:42)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:48)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:31)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:193)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:167)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:82)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:175)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:76)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:56)
+	at software.amazon.awssdk.services.sqs.DefaultSqsClient.receiveMessage(DefaultSqsClient.java:1401)
+	at org.apache.camel.component.aws2.sqs.Sqs2Consumer.poll(Sqs2Consumer.java:107)
+	at org.apache.camel.support.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:202)
+	at org.apache.camel.support.ScheduledPollConsumer.run(ScheduledPollConsumer.java:116)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to sqs.ap-southeast-3.amazonaws.com:443 [sqs.ap-southeast-3.amazonaws.com/99.78.248.43] failed: connect timed out
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at software.amazon.awssdk.http.apache.internal.conn.ClientConnectionManagerFactory$Handler.invoke(ClientConnectionManagerFactory.java:80)
+	at com.sun.proxy.$Proxy197.connect(Unknown Source)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
+	at software.amazon.awssdk.http.apache.internal.impl.ApacheSdkHttpClient.execute(ApacheSdkHttpClient.java:72)
+	at software.amazon.awssdk.http.apache.ApacheHttpClient.execute(ApacheHttpClient.java:253)
+	at software.amazon.awssdk.http.apache.ApacheHttpClient.access$500(ApacheHttpClient.java:106)
+	at software.amazon.awssdk.http.apache.ApacheHttpClient$1.call(ApacheHttpClient.java:232)
+	at software.amazon.awssdk.http.apache.ApacheHttpClient$1.call(ApacheHttpClient.java:229)
+	at software.amazon.awssdk.core.internal.util.MetricUtils.measureDurationUnsafe(MetricUtils.java:64)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeHttpRequestStage.executeHttpRequest(MakeHttpRequestStage.java:76)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeHttpRequestStage.execute(MakeHttpRequestStage.java:55)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeHttpRequestStage.execute(MakeHttpRequestStage.java:39)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptTimeoutTrackingStage.execute(ApiCallAttemptTimeoutTrackingStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptTimeoutTrackingStage.execute(ApiCallAttemptTimeoutTrackingStage.java:42)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.TimeoutExceptionHandlingStage.execute(TimeoutExceptionHandlingStage.java:78)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.TimeoutExceptionHandlingStage.execute(TimeoutExceptionHandlingStage.java:40)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptMetricCollectionStage.execute(ApiCallAttemptMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptMetricCollectionStage.execute(ApiCallAttemptMetricCollectionStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:80)
+	... 31 common frames omitted
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.base/java.net.PlainSocketImpl.waitForConnect(Native Method)
+	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:107)
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.base/java.net.Socket.connect(Socket.java:608)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:368)
+	at software.amazon.awssdk.http.apache.internal.conn.SdkTlsSocketFactory.connectSocket(SdkTlsSocketFactory.java:113)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 64 common frames omitted
+2023-01-24 10:57:32,065 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:02:32,098 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:07:32,111 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:12:32,116 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:14:04,970 INFO org.apache.juli.logging.DirectJDKLog [http-nio-0.0.0.0-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-24 11:14:04,973 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-0.0.0.0-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-24 11:14:05,044 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-0.0.0.0-9000-exec-1] Completed initialization in 70 ms
+2023-01-24 11:14:05,316 ERROR com.kezbek.transaction.external.CognitoInfo [http-nio-0.0.0.0-9000-exec-1] jwk parse failure on bad jose lib [eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.JXaCx4UnZRc_uFpq6-UN7yAVFCQ8BxV5g1BbsalQxqDV7J1hDcYVVz2idNLI_4fuLCwMQjwcSFrMks0V1BGJw_PvvBcBtjKVSXIiAsrsWdAxo4_2P36bw917l0_9FSEYpIijkXTXDw6k27yeDZQUfURlkGGysVQZkM9SRQs5t-HEawVyNDou4Ygm_rxDHrkGSeKIUowv_khhikh-negOa2KD0e9CRTmSGq3J4pDEayZVOZ-7IHUiZRQzASPQGx4i83sXSXayx3_r4NpAobPxTzday-BpMrn3HSyGkoVpWNhfag0zUShxNIQ4zfWUAmIbPM-aSWcoGhPeZuGX3mv16Q.77MYI50EEXuSt1j-.Hq9bh9WXxvzsCNwoeObYnKAwwXf-SVD2VA3A8UgELCCWtqfArFWq0yQ6EbmY9M6ylQqiwav2bOD6jvhZYMUlAyXgCS4oGXNTvYz-0dx3UyHvXTGqHWN4oM7pnqNZWucOTPo61cN5arVguHLQaFsvJBgFScI9IVF8Zi6dQ6jJYz-oda5vQW5uSH2A6moZN3sCa7ZPtRgPrNCu_nweu3gitHeW9twzRmE1GtdPDueh2kODHiTUDGHpCqEmpKJfv71kvMYzVEJDPljWTw8Dn1ZNzEIVlLmdvhR0g6yax0YOJnRxJ7kxm6qhjSN0_sHBUJMWrLkWIimn6qnxyiQR84FzuMtmJEJ0oW7nfbLnL1AWaVJIi5g-_uidsYeEqFaDe1_YMgDmVszY2Cn6GNgY1z1MOSd7YHejK_MV4y6lTyEIChcd2OdwVt56l63CAZiRYQ1h7Fazwq7TtHUIp_JKjO6U5FElhBs83BSepH6LmF-5VRWgVXCa-o6zzqGHlgJUuhJ66XHUrcyA_PTV85Onlf8tKcBCj3JOPMOzJIMSHvGs06NwdZMFwcAdegPiFrn7i5nI0sBS8FDu_Bi1Mp9xjK6Vrz2P0P0R3D3-Q48rRfqHNQUcge_hbbTws804pMPrt-7y-eMeeZbOw1gJZoXsecTQpHjnln4bHSeK5T1fG2hOgYlEtTBYUbrDWT5tATnTpjO4hy0L-q8Ug2hV8NdHAdfYmF9HXu7lI-DWqg6LSo2qzNIEZMe2CivvNxKJWA7Iop8s2QeL5xLQY2snEhf83DTDDaFT9odRCAfc2XS_1cVk7-gzgTupiPRdgREjfuobEzSjGWJjrL1XMHIN_zxgyFq5e63jlJ6Cz3WduT4A8IQjYX-dvrCkANd5ngYGK2N7XlP3LO6rkzo-8n7c-CKA8PwdB62A1KmP8oW6wFNtmIpzCZyyh3qFMWEW8zbdt5XVVxjLk6HqlpxNbGDMWAz2lyQx_OltLNg54sGjhVs6Y8mzW5LlCSmODTK5U8iEsIlvEJly7t2jaf6xYfr7oTm-ahOfc5gR-cuP7x3mnVDt0mPm7JCLS25qWQbVbsJFh2zuUDesUgeoyLjLRiHPTxGSO-ret3ypOr_RVIZsSAC4o1NwV7LYv5-oQcSU6Vb20grLa88ZUAxpQ24Lz_xHkz8AV9cQupy1Mo9NsQ__-r1v9zpbdR5qH6l4MrLwZgc9vtbtnwSXwCmaxbomVDd4d8X1PSOtYOSShvLsWtfR6hNi9srUbfHtT0lxXXs-3UIzR2y5_f9Ob_k2MXCh4WyhWWVJTkr3zKWQAs9j.sjY9hes0EQJBw3-WSRsDSg, com.nimbusds.jose.proc.BadJOSEException: Encrypted JWT rejected: No JWE key selector is configured
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:398)
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:307)
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:294)
+	at com.kezbek.transaction.external.CognitoInfo.execute(CognitoInfo.java:42)
+	at com.kezbek.transaction.service.impl.OnboardServiceImpl.userInfo(OnboardServiceImpl.java:33)
+	at com.kezbek.transaction.config.SecurityConfiguration$1.doFilterInternal(SecurityConfiguration.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+] 
+2023-01-24 11:14:11,813 INFO com.kezbek.transaction.config.SecurityConfiguration$1 [http-nio-0.0.0.0-9000-exec-3] isSkipped [true, /authorization]
+2023-01-24 11:14:11,883 INFO com.kezbek.transaction.external.CognitoAuthorization [http-nio-0.0.0.0-9000-exec-3] decrypted result request [{"companyCode":"tokopedia","password":"p4ssw0!#rD123"}]
+2023-01-24 11:14:12,880 INFO com.kezbek.transaction.external.CognitoInfo [http-nio-0.0.0.0-9000-exec-3] jwt parser claimsSet value [{"origin_jti":"055220c4-bf8a-4aff-83fc-aa6195842715","sub":"9a06c14c-edb7-4516-90bc-44d564823c58","aud":"2vvunnoq32oocjq26j8ed0pk5n","event_id":"aab8e571-33a9-4fad-9248-fe262ca4bc01","token_use":"id","auth_time":1674533653,"iss":"https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_CiuMMIcHs","name":"Tokopedia","cognito:username":"tokopedia","exp":1674537253,"iat":1674533653,"jti":"dc6202f7-d7e4-479a-8ef9-fed050aafa3d"}]
+2023-01-24 11:14:23,114 ERROR com.kezbek.transaction.external.CognitoInfo [http-nio-0.0.0.0-9000-exec-4] jwk parse failure on bad jose lib [eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.gTwVk1oldAICv9ktkFjiNT8dzEz4Pq8OQqlZBOdSuW6b1ot3w296LDdBxqTCcOwXSEFQ9vcJqjEH26xdhbrzeGusxX3TcQb6-XPWZVPw1CgKmPBvSqdCY1koiQUFq5jXeq6OpGojljAEw0qk3GhNoNvqRWHoSJafBp0dW_MP59MUJ2XVVCWwlW4OBPF_9eY_7UXkekDiWM9ujiUQerVqGBeVYrdRysEnpaJQpvf2JBEh5KQ3QPtjNXlqTfYHBGjOFeFG1MPW1dssA53YAXTL-0IogQFHPwbYP6508eRTOUen0pVdQATgTzspVX5LMtt9tlwse0hFnhrfCL1gDhNxww.ikPBjesnHJvKlIIP.4ppB_h4kPVOoutzN4MfuwHLD0_8NK25GGzajJRVLsAuXI_Gs_MsEPUJfueQ3elJBjWoTuVX-spkC_rWrTOJAM48p8QO_UyrxD1HlNgvLz4ts-1JUOo4N40kPXalrrtjt5wi-_yyAXnDYhEeM2tMIsHMU_TxULkjBIQXvSzNp3EL0P4cxvZVzb5E43UVRwa2rxcTeMkH4V0g4un8HUilE0-CFZXdnVsw8j-kxLSsSzFT8iU2dqyL9Sh1QOAbdQeARWUfdMcxyZBIg7z6mozDndiCoRxLagL-7Ir9UVG3Q_RupyEEXh2y4ky11Xk-hiullIRnIhP9tKFcz4Mj-yOZQBNFiC7J6WmTC6V95Ct5DoQQpt-5axyY9gonuVI6J2hfav4xfkF5-Ej7cvhhAVj9D-8_mk7oneUbMnuD6IW0zfWC5_LcSXGf9ZfptcNWqcF32rYsznlIIGTacRdMw5woTTqkwqb4Ad1jQsh1grDtOGGbVgAZ5UC_Xngt7QCGs03-emQS7ckPC1hnF57Y5u6O0ZmrbQXxJGJDqX_cHivBM9F2dxb_pv8zdvT5__-SquWOTTrhVfprmvp8u1_Ct5xfns4s-2B0Fhv3wZHamz90e0HEVDcoab2ZQiKGc3kn_T-Qi6D1w1th8h_ol2fO0tXWI9DVsLulCXlYvdJGElWauuuchiWeuOcEbKF_d3w4kf5IutSaN40DqGTQoTLNq6dJkUhetoM9SM_hzUKNWZIydjlwAUoXWo1AoAz9YGcM5Yq6aKlbxXTG3fxMWoQqR8NJpB6QGjIkANgfvOUVw07OW9YbWxzZXUdQanmLY1nAxd-ZfjQl6Sj8HJi_328ROKW-BAqTSMYcn5D6BtCjAm4kG5L4u3PPfy328PlT1NbbZaUXLgxkpf-7C8DE8uD1v8s3KoSrQpIHFHmnMbR3_D_A5ZjXCad1DFPHaTEOPqrTYj8Gx4STogy7ZoCkCJYkP7a4UzsxBjaThAXeFvN7J1c-F6GrtOVx1X9aQlmhvzxrPCSxti9ftFmZkcsYYsrJAFAN2tCFaMBcslnylgjar8VmYBXnkUbC_FrMmxJpzkx8S3N5nzncoCJ0PamTrEmlQ5nz51Xzmcct2DWcxA2NGSe1-vWL_EeviINVUUU5NiHZkAvNdOp6m--Pa48mIg-mehb3an-KrIhbOYuHjsZOSds1UKblWr7wSroxFcOk5DH6SKZDuTnR2U2fhkd3QEykoIwXgmZ2P_L0IYvbYjxHeYZzHvWvevxRoTgKVpNbm6TSNAaifJiQF6tfOuzM-UDTerx-51-B1ClyP.5RCFHworWYeznVlMOnA9xQ, com.nimbusds.jose.proc.BadJOSEException: Encrypted JWT rejected: No JWE key selector is configured
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:398)
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:307)
+	at com.nimbusds.jwt.proc.DefaultJWTProcessor.process(DefaultJWTProcessor.java:294)
+	at com.kezbek.transaction.external.CognitoInfo.execute(CognitoInfo.java:42)
+	at com.kezbek.transaction.service.impl.OnboardServiceImpl.userInfo(OnboardServiceImpl.java:33)
+	at com.kezbek.transaction.config.SecurityConfiguration$1.doFilterInternal(SecurityConfiguration.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+] 
+2023-01-24 11:17:32,122 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:22:32,128 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:27:32,143 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:32:32,153 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:37:32,164 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:42:32,169 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:47:32,180 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-24 11:50:41,193 INFO org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry [Thread-6] Unregistering application TRANSACTION-SERVICE with eureka with status DOWN
+2023-01-24 11:50:41,196 WARN com.netflix.discovery.DiscoveryClient$3 [Thread-6] Saw local status change event StatusChangeEvent [timestamp=1674535841195, current=DOWN, previous=UP]
+2023-01-24 11:50:41,197 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:50:41,229 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:50:41,240 INFO org.apache.camel.impl.engine.AbstractCamelContext [Thread-6] Apache Camel 3.15.0 (camel-1) shutting down (timeout:45s)
+2023-01-24 11:50:41,294 INFO org.apache.camel.spi.CamelLogger [Thread-6] Routes stopped (total:1 stopped:1)
+2023-01-24 11:50:41,294 INFO org.apache.camel.spi.CamelLogger [Thread-6]     Stopped route1 (aws2-sqs://kezbek-notification-email)
+2023-01-24 11:50:41,302 INFO org.apache.camel.impl.engine.AbstractCamelContext [Thread-6] Apache Camel 3.15.0 (camel-1) shutdown in 63ms (uptime:1h3m7s)
+2023-01-24 11:50:41,602 INFO org.apache.camel.component.servlet.CamelHttpTransportServlet [Thread-6] Destroyed CamelHttpTransportServlet[CamelServlet]
+2023-01-24 11:50:41,634 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-6] Shutting down ExecutorService 'taskScheduler'
+2023-01-24 11:50:41,637 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-6] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-01-24 11:50:41,671 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-6] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-24 11:50:41,711 INFO com.zaxxer.hikari.HikariDataSource [Thread-6] HikariPool-1 - Shutdown initiated...
+2023-01-24 11:50:41,717 INFO com.zaxxer.hikari.HikariDataSource [Thread-6] HikariPool-1 - Shutdown completed.
+2023-01-24 11:50:41,720 INFO com.netflix.discovery.DiscoveryClient [Thread-6] Shutting down DiscoveryClient ...
+2023-01-24 11:50:44,737 INFO com.netflix.discovery.DiscoveryClient [Thread-6] Unregistering ...
+2023-01-24 11:50:44,751 INFO com.netflix.discovery.DiscoveryClient [Thread-6] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - deregister  status: 200
+2023-01-24 11:50:44,769 INFO com.netflix.discovery.DiscoveryClient [Thread-6] Completed shut down of DiscoveryClient
+2023-01-24 11:50:46,161 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-24 11:50:47,032 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-24 11:50:47,068 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 35ms. Found 4 JPA repository interfaces.
+2023-01-24 11:50:47,190 INFO org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=1eda566d-f6bf-30d3-a45a-66031ca0ab7e
+2023-01-24 11:50:47,214 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.kezbek.transaction.feign.KezbekDroolsClientService' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:47,241 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7395186f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:47,242 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:47,471 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9000 (http)
+2023-01-24 11:50:47,473 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-0.0.0.0-9000"]
+2023-01-24 11:50:47,473 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-01-24 11:50:47,473 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.46]
+2023-01-24 11:50:47,565 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-01-24 11:50:47,566 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1402 ms
+2023-01-24 11:50:47,660 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2023-01-24 11:50:47,709 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2023-01-24 11:50:47,710 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] Database: jdbc:postgresql://localhost:5432/syamsulcashback (PostgreSQL 15.1)
+2023-01-24 11:50:47,713 WARN org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] Flyway upgrade recommended: PostgreSQL 15.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 12.
+2023-01-24 11:50:47,729 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] Successfully validated 0 migrations (execution time 00:00.010s)
+2023-01-24 11:50:47,729 WARN org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] No migrations found. Are your locations set up correctly?
+2023-01-24 11:50:47,732 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] Current version of schema "public": << Empty Schema >>
+2023-01-24 11:50:47,733 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [restartedMain] Schema "public" is up to date. No migration necessary.
+2023-01-24 11:50:47,766 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-24 11:50:47,786 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-24 11:50:47,999 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-24 11:50:48,000 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-24 11:50:48,031 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-01-24 11:50:48,076 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-24 11:50:48,674 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2023-01-24 11:50:48,679 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2023-01-24 11:50:48,683 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2023-01-24 11:50:48,692 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(org.springframework.http.ResponseEntity) -> ModelContext{type=org.springframework.http.ResponseEntity, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,696 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(org.springframework.http.ResponseEntity) -> ModelContext{type=org.springframework.http.ResponseEntity, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,720 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.AuthorizationRequest) -> ModelContext{type=com.kezbek.transaction.model.request.AuthorizationRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,721 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.AuthorizationRequest) -> ModelContext{type=com.kezbek.transaction.model.request.AuthorizationRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,721 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.response.SessionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.SessionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,721 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.response.SessionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.SessionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,727 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.PartnerRequest) -> ModelContext{type=com.kezbek.transaction.model.request.PartnerRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,727 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.PartnerRequest) -> ModelContext{type=com.kezbek.transaction.model.request.PartnerRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,729 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.TransactionRequest) -> ModelContext{type=com.kezbek.transaction.model.request.TransactionRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,729 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.request.TransactionRequest) -> ModelContext{type=com.kezbek.transaction.model.request.TransactionRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:50:48,729 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.response.UserTransactionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.UserTransactionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,730 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [restartedMain] Exception calculating properties for model(com.kezbek.transaction.model.response.UserTransactionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.UserTransactionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:50:48,731 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [restartedMain] Generating unique operation named: addPartnerUsingPOST_1
+2023-01-24 11:50:48,820 INFO org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: b2409124-e1ee-4397-acce-cc5bea4ffeae
+
+2023-01-24 11:50:48,898 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: Mvc [pattern='/swagger-ui.html/**'], []
+2023-01-24 11:50:48,899 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: Mvc [pattern='/configuration/**'], []
+2023-01-24 11:50:48,899 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: Mvc [pattern='/swagger-resources/**'], []
+2023-01-24 11:50:48,899 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: Mvc [pattern='/v2/api-docs'], []
+2023-01-24 11:50:48,899 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: Mvc [pattern='/webjars/**'], []
+2023-01-24 11:50:48,917 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31f3beec, org.springframework.security.web.context.SecurityContextPersistenceFilter@2cc22758, org.springframework.security.web.header.HeaderWriterFilter@7a9db2b6, org.springframework.web.filter.CorsFilter@4ef4348c, org.springframework.security.web.authentication.logout.LogoutFilter@21f0b3ee, com.kezbek.transaction.config.SecurityConfiguration$1@7f8e7102, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21463ab6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36d9242a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bc5d2de, org.springframework.security.web.session.SessionManagementFilter@635923fd, org.springframework.security.web.access.ExceptionTranslationFilter@3c4639f7]
+2023-01-24 11:50:48,924 WARN com.netflix.config.sources.URLConfigurationSource [restartedMain] No URLs will be polled as dynamic configuration sources.
+2023-01-24 11:50:48,925 INFO com.netflix.config.sources.URLConfigurationSource [restartedMain] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2023-01-24 11:50:48,954 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2023-01-24 11:50:49,105 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'taskScheduler'
+2023-01-24 11:50:49,708 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.1.7.Final
+2023-01-24 11:50:50,139 WARN org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger [restartedMain] You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2023-01-24 11:50:50,211 INFO org.springframework.cloud.netflix.eureka.InstanceInfoFactory [restartedMain] Setting initial instance status as: STARTING
+2023-01-24 11:50:50,213 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Initializing Eureka in region us-east-1
+2023-01-24 11:50:50,214 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [restartedMain] Using JSON encoding codec LegacyJacksonJson
+2023-01-24 11:50:50,215 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [restartedMain] Using JSON decoding codec LegacyJacksonJson
+2023-01-24 11:50:50,215 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [restartedMain] Using XML encoding codec XStreamXml
+2023-01-24 11:50:50,215 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [restartedMain] Using XML decoding codec XStreamXml
+2023-01-24 11:50:50,272 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [restartedMain] Resolving eureka endpoints via configuration
+2023-01-24 11:50:50,273 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Disable delta property : false
+2023-01-24 11:50:50,273 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Single vip registry refresh property : null
+2023-01-24 11:50:50,274 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Force full registry fetch : false
+2023-01-24 11:50:50,274 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Application is null : false
+2023-01-24 11:50:50,274 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Registered Applications size is zero : true
+2023-01-24 11:50:50,274 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Application version is -1: true
+2023-01-24 11:50:50,274 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Getting all instance registry info from the eureka server
+2023-01-24 11:50:50,280 INFO com.netflix.discovery.DiscoveryClient [restartedMain] The response status is 200
+2023-01-24 11:50:50,281 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Starting heartbeat executor: renew interval is: 30
+2023-01-24 11:50:50,281 INFO com.netflix.discovery.InstanceInfoReplicator [restartedMain] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-01-24 11:50:50,282 INFO com.netflix.discovery.DiscoveryClient [restartedMain] Discovery Client initialized at timestamp 1674535850282 with initial instances count: 2
+2023-01-24 11:50:50,285 INFO org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry [restartedMain] Registering application TRANSACTION-SERVICE with eureka with status UP
+2023-01-24 11:50:50,285 INFO com.netflix.discovery.DiscoveryClient$3 [restartedMain] Saw local status change event StatusChangeEvent [timestamp=1674535850285, current=UP, previous=STARTING]
+2023-01-24 11:50:50,286 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:50:50,288 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-0.0.0.0-9000"]
+2023-01-24 11:50:50,292 INFO org.apache.camel.component.servlet.CamelHttpTransportServlet [restartedMain] Initialized CamelHttpTransportServlet[name=CamelServlet, contextPath=]
+2023-01-24 11:50:50,293 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9000 (http) with context path ''
+2023-01-24 11:50:50,293 INFO org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration [restartedMain] Updating port to 9000
+2023-01-24 11:50:50,310 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:50:50,720 INFO com.kezbek.transaction.router.QueueProcessTransactionRouter [restartedMain] Transaction - transaction consumer is running [aws2-sqs://kezbek-notification-email?accessKey=AKIA2WLDYKX5GR7IAI66&secretKey=RAW(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)&region=ap-southeast-3]
+2023-01-24 11:50:51,086 INFO org.apache.camel.impl.engine.AbstractCamelContext [restartedMain] Routes startup (total:1 started:1)
+2023-01-24 11:50:51,086 INFO org.apache.camel.impl.engine.AbstractCamelContext [restartedMain]     Started route2 (aws2-sqs://kezbek-notification-email)
+2023-01-24 11:50:51,086 INFO org.apache.camel.impl.engine.AbstractCamelContext [restartedMain] Apache Camel 3.15.0 (camel-2) started in 378ms (build:25ms init:351ms start:2ms)
+2023-01-24 11:50:51,087 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started Application in 6.064 seconds (JVM running for 3809.962)
+2023-01-24 11:50:51,089 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-01-24 11:50:51,398 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2023-01-24 11:50:53,059 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-24 11:50:53,359 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 286ms. Found 4 JPA repository interfaces.
+2023-01-24 11:50:53,898 INFO org.springframework.cloud.context.scope.GenericScope [main] BeanFactory id=a5638ed0-a161-3e60-a9c4-b536958f6f05
+2023-01-24 11:50:54,136 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'com.kezbek.transaction.feign.KezbekDroolsClientService' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:54,347 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7b939175' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:54,363 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-01-24 11:50:54,663 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Flyway Community Edition 6.4.4 by Redgate
+2023-01-24 11:50:54,673 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-24 11:50:55,283 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-24 11:50:55,337 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Database: jdbc:postgresql://localhost:5432/syamsulcashback (PostgreSQL 15.1)
+2023-01-24 11:50:55,345 WARN org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Flyway upgrade recommended: PostgreSQL 15.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 12.
+2023-01-24 11:50:55,378 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Successfully validated 0 migrations (execution time 00:00.016s)
+2023-01-24 11:50:55,378 WARN org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] No migrations found. Are your locations set up correctly?
+2023-01-24 11:50:55,385 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Current version of schema "public": << Empty Schema >>
+2023-01-24 11:50:55,386 INFO org.flywaydb.core.internal.logging.slf4j.Slf4jLog [main] Schema "public" is up to date. No migration necessary.
+2023-01-24 11:50:55,586 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-24 11:50:55,694 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2023-01-24 11:50:55,921 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-24 11:50:56,131 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-24 11:50:57,472 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-24 11:50:57,486 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-24 11:50:57,694 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-24 11:51:00,382 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2023-01-24 11:51:00,477 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2023-01-24 11:51:00,499 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2023-01-24 11:51:00,572 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(org.springframework.http.ResponseEntity) -> ModelContext{type=org.springframework.http.ResponseEntity, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,588 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(org.springframework.http.ResponseEntity) -> ModelContext{type=org.springframework.http.ResponseEntity, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,736 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.AuthorizationRequest) -> ModelContext{type=com.kezbek.transaction.model.request.AuthorizationRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,737 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.AuthorizationRequest) -> ModelContext{type=com.kezbek.transaction.model.request.AuthorizationRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,738 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.response.SessionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.SessionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,738 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.response.SessionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.SessionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,766 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.PartnerRequest) -> ModelContext{type=com.kezbek.transaction.model.request.PartnerRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,767 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.PartnerRequest) -> ModelContext{type=com.kezbek.transaction.model.request.PartnerRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,770 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.TransactionRequest) -> ModelContext{type=com.kezbek.transaction.model.request.TransactionRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,771 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.request.TransactionRequest) -> ModelContext{type=com.kezbek.transaction.model.request.TransactionRequest, isReturnType=false}. java.lang.NullPointerException
+2023-01-24 11:51:00,772 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.response.UserTransactionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.UserTransactionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,772 WARN springfox.documentation.schema.property.CachingModelPropertiesProvider [main] Exception calculating properties for model(com.kezbek.transaction.model.response.UserTransactionResponse) -> ModelContext{type=com.kezbek.transaction.model.response.UserTransactionResponse, isReturnType=true}. java.lang.NullPointerException
+2023-01-24 11:51:00,775 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: addPartnerUsingPOST_1
+2023-01-24 11:51:01,306 INFO org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [main] 
+
+Using generated security password: 8e733f4e-1362-4839-9dde-584651b19f8f
+
+2023-01-24 11:51:01,715 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: Mvc [pattern='/swagger-ui.html/**'], []
+2023-01-24 11:51:01,715 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: Mvc [pattern='/configuration/**'], []
+2023-01-24 11:51:01,715 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: Mvc [pattern='/swagger-resources/**'], []
+2023-01-24 11:51:01,715 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: Mvc [pattern='/v2/api-docs'], []
+2023-01-24 11:51:01,715 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: Mvc [pattern='/webjars/**'], []
+2023-01-24 11:51:01,811 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@236e80c7, org.springframework.security.web.context.SecurityContextPersistenceFilter@62501c2b, org.springframework.security.web.header.HeaderWriterFilter@5a768240, org.springframework.web.filter.CorsFilter@3d918fc3, org.springframework.security.web.authentication.logout.LogoutFilter@3df20b61, com.kezbek.transaction.config.SecurityConfiguration$1@12872cf3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7509e05d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@306c6981, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4868300, org.springframework.security.web.session.SessionManagementFilter@714cbfc0, org.springframework.security.web.access.ExceptionTranslationFilter@f8a19e3]
+2023-01-24 11:51:02,005 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2023-01-24 11:51:02,005 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2023-01-24 11:51:02,016 WARN com.netflix.config.sources.URLConfigurationSource [main] No URLs will be polled as dynamic configuration sources.
+2023-01-24 11:51:02,016 INFO com.netflix.config.sources.URLConfigurationSource [main] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2023-01-24 11:51:02,175 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-01-24 11:51:02,926 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2023-01-24 11:51:03,996 WARN org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger [main] You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2023-01-24 11:51:04,137 INFO org.springframework.cloud.netflix.eureka.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2023-01-24 11:51:04,233 INFO com.netflix.discovery.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2023-01-24 11:51:04,320 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [main] Using JSON encoding codec LegacyJacksonJson
+2023-01-24 11:51:04,321 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [main] Using JSON decoding codec LegacyJacksonJson
+2023-01-24 11:51:04,512 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [main] Using XML encoding codec XStreamXml
+2023-01-24 11:51:04,513 INFO com.netflix.discovery.provider.DiscoveryJerseyProvider [main] Using XML decoding codec XStreamXml
+2023-01-24 11:51:04,855 INFO com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2023-01-24 11:51:05,122 INFO com.netflix.discovery.DiscoveryClient [main] Disable delta property : false
+2023-01-24 11:51:05,122 INFO com.netflix.discovery.DiscoveryClient [main] Single vip registry refresh property : null
+2023-01-24 11:51:05,122 INFO com.netflix.discovery.DiscoveryClient [main] Force full registry fetch : false
+2023-01-24 11:51:05,123 INFO com.netflix.discovery.DiscoveryClient [main] Application is null : false
+2023-01-24 11:51:05,123 INFO com.netflix.discovery.DiscoveryClient [main] Registered Applications size is zero : true
+2023-01-24 11:51:05,123 INFO com.netflix.discovery.DiscoveryClient [main] Application version is -1: true
+2023-01-24 11:51:05,123 INFO com.netflix.discovery.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2023-01-24 11:51:05,281 INFO com.netflix.discovery.DiscoveryClient [main] The response status is 200
+2023-01-24 11:51:05,284 INFO com.netflix.discovery.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2023-01-24 11:51:05,288 INFO com.netflix.discovery.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-01-24 11:51:05,291 INFO com.netflix.discovery.DiscoveryClient [main] Discovery Client initialized at timestamp 1674535865290 with initial instances count: 2
+2023-01-24 11:51:05,297 INFO org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry [main] Registering application TRANSACTION-SERVICE with eureka with status UP
+2023-01-24 11:51:05,297 INFO com.netflix.discovery.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1674535865297, current=UP, previous=STARTING]
+2023-01-24 11:51:05,301 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:51:05,310 INFO com.kezbek.transaction.router.QueueProcessTransactionRouter [main] Transaction - transaction consumer is running [aws2-sqs://kezbek-notification-email?accessKey=AKIA2WLDYKX5GR7IAI66&secretKey=RAW(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)&region=ap-southeast-3]
+2023-01-24 11:51:05,353 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:51:07,325 INFO org.apache.camel.impl.engine.AbstractCamelContext [main] Routes startup (total:1 started:1)
+2023-01-24 11:51:07,326 INFO org.apache.camel.impl.engine.AbstractCamelContext [main]     Started route1 (aws2-sqs://kezbek-notification-email)
+2023-01-24 11:51:07,326 INFO org.apache.camel.impl.engine.AbstractCamelContext [main] Apache Camel 3.15.0 (camel-1) started in 2s62ms (build:150ms init:1s880ms start:32ms)
+2023-01-24 11:51:07,334 INFO org.springframework.boot.StartupInfoLogger [main] Started ApplicationTests in 18.68 seconds (JVM running for 20.822)
+2023-01-24 11:51:07,842 INFO org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry [SpringContextShutdownHook] Unregistering application TRANSACTION-SERVICE with eureka with status DOWN
+2023-01-24 11:51:07,843 WARN com.netflix.discovery.DiscoveryClient$3 [SpringContextShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1674535867843, current=DOWN, previous=UP]
+2023-01-24 11:51:07,843 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000: registering service...
+2023-01-24 11:51:07,849 INFO com.netflix.discovery.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - registration status: 204
+2023-01-24 11:51:07,849 INFO org.apache.camel.impl.engine.AbstractCamelContext [SpringContextShutdownHook] Apache Camel 3.15.0 (camel-1) shutting down (timeout:45s)
+2023-01-24 11:51:08,040 INFO org.apache.camel.spi.CamelLogger [SpringContextShutdownHook] Routes stopped (total:1 stopped:1)
+2023-01-24 11:51:08,040 INFO org.apache.camel.spi.CamelLogger [SpringContextShutdownHook]     Stopped route1 (aws2-sqs://kezbek-notification-email)
+2023-01-24 11:51:08,044 INFO org.apache.camel.impl.engine.AbstractCamelContext [SpringContextShutdownHook] Apache Camel 3.15.0 (camel-1) shutdown in 195ms (uptime:750ms)
+2023-01-24 11:51:08,046 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-01-24 11:51:08,047 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-01-24 11:51:08,058 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-24 11:51:08,060 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-24 11:51:08,066 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-24 11:51:08,067 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] Shutting down DiscoveryClient ...
+2023-01-24 11:51:11,071 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] Unregistering ...
+2023-01-24 11:51:11,088 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] DiscoveryClient_TRANSACTION-SERVICE/DESKTOP-E3VN3BD.mshome.net:TRANSACTION-SERVICE:9000 - deregister  status: 200
+2023-01-24 11:51:11,098 INFO com.netflix.discovery.DiscoveryClient [SpringContextShutdownHook] Completed shut down of DiscoveryClient
