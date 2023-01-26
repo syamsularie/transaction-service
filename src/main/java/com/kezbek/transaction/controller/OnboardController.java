@@ -21,5 +21,4 @@ public class OnboardController {
         return new ResponseEntity<>(onboardService.authorization(request),
                 HttpStatus.OK);
     }
-
 }

@@ -43,11 +43,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     TopUpEmoney topUpEmoney;
 
-//    public TransactionServiceImpl(TransactionDetailReporsitory transactionDetailReporsitory) {
-//
-//        this.transactionDetailReporsitory = transactionDetailReporsitory;
-//    }
-
     static TierType nextTier(TierType currentTier) {
         switch (currentTier) {
             case BRONZE:

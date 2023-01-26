@@ -5,9 +5,19 @@ networks:
     external: true
 
 services:
+  registry-service:
+    image: syamsularie/registry-servicei:main
+    container_name: registry-service
+    restart: always
+    networks:
+      - docknet
+    volumes:
+      - ./config-registry:/config
+      - ./logs/partner:/logs
+
   transaction-service:
-    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/transction-api:main
-    container_name: kzbk-transaction
+    image: syamsularie/transction-service:main
+    container_name: transaction-service
     restart: always
     networks:
       - docknet
@@ -15,27 +25,26 @@ services:
       - ./config-transaction:/config
       - ./logs/transaction:/logs
     ports:
-      - 8080:8080
+      - 9000:9000
 
-  kzbk-partner:
-    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/partner-api:main
-    container_name: kzbk-partner
+  drools-service:
+    image: syamsularie/drools-service:main
+    container_name: drools-service
     restart: always
     networks:
       - docknet
     volumes:
-      - ./config-partner:/config
+      - ./config-drools:/config
       - ./logs/partner:/logs
 
-  kzbk-consumer-notify:
-    image: registry.gitlab.com/agusprg/kezbek-system/kzbk-backend/notify-consumer:main
-    container_name: kzbk-comnsumer-notify
+  mailer-service:
+    image: syamsularie/mailer-service:main
+    container_name: mailer-service
     restart: always
     networks:
       - docknet
     volumes:
-      - ./config-consumer-notify:/config
+      - ./config-mailer:/config
       - ./logs/partner:/logs
-
 volumes:
   config:

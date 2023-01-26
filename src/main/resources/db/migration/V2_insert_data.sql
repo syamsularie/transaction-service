@@ -1,1 +1,0 @@
-INSERT INTO partners (id, name, partner_code) VALUES (2,'Tokopedia','tokopedia');
